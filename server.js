@@ -18,6 +18,7 @@ io.on('connection',function(socket) {
 	});
 	// both would have timestamp property - JavaScript timestamp in millis
 	socket.emit('message', {
+		name: 'System',
 		text: "Welcome to the chat application",
 		timestamp: now.valueOf()
 	});
