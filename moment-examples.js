@@ -9,7 +9,7 @@ console.log(now.format('x')); //milliseconds since unix epoch time
 console.log(now.valueOf());*/
 
 var timestamp = now.valueOf();
-var timestampMoment = moment.utc(timestamp).local();;
+var timestampMoment = moment.utc(timestamp).local();
 console.log(timestampMoment.format('MMM Do YYYY, h:mm:ssa'));
 // fix timezone offset
 
