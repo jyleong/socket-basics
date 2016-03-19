@@ -2,9 +2,13 @@ var name = getQueryVariable('name') || 'Anonymous';
 var room = getQueryVariable('room');
 var socket = io();
 
-console.log(name + " joined " + room);
-socket.on('connection', function() {
+$('.room-title').text(room);
+socket.on('connect', function() {
 	console.log("Connected to server via front end");
+	socket.emit('joinRoom', { // custom even to server
+		name: name,
+		room: room
+	});
 });
 socket.on('message', function(message) {
 	console.log('New message: ');
