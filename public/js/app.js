@@ -6,10 +6,7 @@ socket.on('connection', function() {
 socket.on('message', function(message) {
 	console.log('New message: ');
 	console.log(message.text);
-});
-
-socket.emit('message', {
-	text: "seen from a browser"
+	jQuery('.messages').append('<p>'+ message.text+'</p>');
 });
 
 // handle submitting of new messages
