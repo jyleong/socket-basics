@@ -2,6 +2,17 @@ var name = getQueryVariable('name') || 'Anonymous';
 var room = getQueryVariable('room');
 var socket = io();
 
+removeliScrollBot = function() {
+	
+	var $messagesli = $('.messages li');
+	if ($messagesli.length > 10) {
+		$messagesli.first().remove();
+	}
+	$('.messages').animate({
+	     scrollTop: $('.messages li:last-child').position().top
+	}, 'slow');
+}
+
 $('.room-title').text(room);
 socket.on('connect', function() {
 	console.log("Connected to server via front end");
@@ -20,6 +31,7 @@ socket.on('message', function(message) {
 	$message.append('<p>' + message.text+ '</p>')
 	$messages.append($message);
 	// mod this callback
+	removeliScrollBot();
 });
 
 // handle submitting of new messages
@@ -34,3 +46,4 @@ $form.on('submit', function(event) {
 	});
 	$msg.val('');
 });
+
